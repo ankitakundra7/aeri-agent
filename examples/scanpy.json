@@ -1,0 +1,90 @@
+{
+  "repo_url": "https://github.com/scverse/scanpy",
+  "scan_date": "2026-05-22 14:12:18",
+  "duration_seconds": 209.4,
+  "verification": {
+    "v1_scanner": {
+      "ipynb_exist": true,
+      "py_excluded": true,
+      "scanner_would_select": [
+        "notebooks/pbmc3k.ipynb",
+        "notebooks/basic-scrna-tutorial.ipynb",
+        "docs/tutorials/basics/clustering.ipynb",
+        "docs/how-to/cell-cycle.ipynb"
+      ],
+      "selection_is_core_method": true
+    },
+    "v2_sample_data": {
+      "actual_data_files_in_repo": [
+        "tests/_data/10x_data/1.2.0/filtered_gene_bc_matrices_h5.h5",
+        "tests/_data/10x_data/1.2.0/multiple_genomes.h5",
+        "tests/_data/regress_test_small.npy"
+      ],
+      "requires_external_download": false,
+      "data_included": true
+    },
+    "v3_demo": {
+      "demo_exists": true,
+      "demo_runs_core_method": true,
+      "demo_needs_external_data": false,
+      "demo_path": "notebooks/pbmc3k.ipynb"
+    },
+    "v4_environment": {
+      "pip_install_likely_works": true,
+      "has_cuda_deps": false,
+      "blocking_issues": []
+    }
+  },
+  "completeness": {
+    "score": 3,
+    "content_score": 3,
+    "structural_score": 3,
+    "reasoning": "Core method (single-cell analysis pipeline) is demonstrated in relevant notebooks that import and use scanpy extensively. Built-in dataset functions provide readily available data. Clear README and well-organized structure.",
+    "core_files": [
+      "src/scanpy/preprocessing/",
+      "src/scanpy/tools/",
+      "src/scanpy/plotting/"
+    ],
+    "scanner_would_find": true,
+    "scanner_would_select": [
+      "notebooks/pbmc3k.ipynb",
+      "notebooks/basic-scrna-tutorial.ipynb"
+    ]
+  },
+  "clarity": {
+    "score": 3,
+    "reasoning": "Comprehensive docstrings throughout codebase, well-documented functions, clear README, minimal hardcoded paths, extensive documentation website",
+    "has_docstrings": true,
+    "has_hardcoded_paths": false,
+    "config_system": "settings"
+  },
+  "modularity": {
+    "score": 3,
+    "reasoning": "Library is designed for import as 'import scanpy as sc', clean module structure with preprocessing, tools, and plotting submodules. No top-level side effects.",
+    "model_importable_independently": true,
+    "custom_packages": []
+  },
+  "reproducibility": {
+    "score": 3,
+    "reasoning": "Single-command pip install works, all dependencies on PyPI, no SSH URLs, comprehensive pyproject.toml",
+    "env_install_likely_succeeds": true,
+    "blocking_issues": []
+  },
+  "executability": {
+    "score": 3,
+    "reasoning": "Comprehensive demos exist showing full single-cell analysis workflow from data loading to clustering and visualization. Built-in dataset functions provide readily available data. Runs on CPU in reasonable time.",
+    "demo_exists": true,
+    "demo_runs_core_method": true,
+    "demo_path": "notebooks/pbmc3k.ipynb",
+    "cpu_capable": true
+  },
+  "total_score": 15,
+  "classification": "Agent-Ready",
+  "agent_ready": true,
+  "recommendations": [
+    "Repository is already well-structured for agent conversion",
+    "Notebooks effectively demonstrate core single-cell analysis capabilities",
+    "Built-in dataset functions eliminate external data dependencies"
+  ],
+  "aeri_cost_usd": 0.4706
+}

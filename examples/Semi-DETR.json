@@ -1,0 +1,102 @@
+{
+  "repo_url": "https://github.com/JCZ404/Semi-DETR",
+  "scan_date": "2026-05-22 06:38:19",
+  "duration_seconds": 217.0,
+  "verification": {
+    "v1_scanner": {
+      "ipynb_exist": true,
+      "py_excluded": true,
+      "scanner_would_select": [
+        "thirdparty/mmdetection/demo/inference_demo.ipynb",
+        "thirdparty/mmdetection/demo/MMDet_Tutorial.ipynb"
+      ],
+      "selection_is_core_method": false
+    },
+    "v2_sample_data": {
+      "actual_data_files_in_repo": [],
+      "requires_external_download": true,
+      "data_included": false
+    },
+    "v3_demo": {
+      "demo_exists": true,
+      "demo_runs_core_method": true,
+      "demo_needs_external_data": true,
+      "demo_path": "demo/image_demo.py"
+    },
+    "v4_environment": {
+      "pip_install_likely_works": false,
+      "has_cuda_deps": true,
+      "blocking_issues": [
+        "Complex multi-step installation process",
+        "CUDA compilation required for deformable attention ops",
+        "Custom mmdetection installation from thirdparty",
+        "Multiple custom packages (detr_od, detr_ssod) not on PyPI"
+      ]
+    }
+  },
+  "completeness": {
+    "score": 1,
+    "content_score": 1,
+    "structural_score": 1,
+    "reasoning": "This is a 'misaligned notebooks' pattern. The core Semi-DETR method is in .py files, but .ipynb files exist that are unrelated peripheral content (generic MMDetection tutorials). The scanner will exclude all .py files and select only the notebooks, completely missing the core Semi-DETR method. This is a critical content gap.",
+    "core_files": [
+      "detr_od/models/dino_detr.py",
+      "detr_od/models/dense_heads/dino_detr_head.py",
+      "detr_ssod/"
+    ],
+    "scanner_would_find": false,
+    "scanner_would_select": [
+      "thirdparty/mmdetection/demo/inference_demo.ipynb",
+      "thirdparty/mmdetection/demo/MMDet_Tutorial.ipynb"
+    ]
+  },
+  "clarity": {
+    "score": 1,
+    "reasoning": "Minimal documentation with inconsistent docstrings. Config system exists but has relative path dependencies. No comprehensive documentation or clear entry points for understanding the core method.",
+    "has_docstrings": false,
+    "has_hardcoded_paths": true,
+    "config_system": "python"
+  },
+  "modularity": {
+    "score": 1,
+    "reasoning": "Tightly coupled architecture with multiple interdependent custom packages (detr_od, detr_ssod). Complex dependency on customized mmdetection. Not easily importable as standalone module due to extensive coupling.",
+    "model_importable_independently": false,
+    "custom_packages": [
+      "detr_od",
+      "detr_ssod",
+      "thirdparty/mmdetection"
+    ]
+  },
+  "reproducibility": {
+    "score": 1,
+    "reasoning": "Environment installation likely fails due to complex multi-step process requiring CUDA compilation, custom mmdetection installation, and custom CUDA ops. Dependencies not on PyPI and require specific environment setup.",
+    "env_install_likely_succeeds": false,
+    "blocking_issues": [
+      "Complex multi-step installation",
+      "CUDA compilation required",
+      "Custom packages not on PyPI",
+      "Requires specific mmdetection version from thirdparty"
+    ]
+  },
+  "executability": {
+    "score": 1,
+    "reasoning": "Demo exists but requires external model checkpoint downloads and cannot run without extensive setup. Requires multi-GPU setup as indicated in issues. No CPU-only capability for demonstrating core method.",
+    "demo_exists": true,
+    "demo_runs_core_method": true,
+    "demo_path": "demo/image_demo.py",
+    "cpu_capable": false
+  },
+  "total_score": 5,
+  "classification": "Not Agent-Ready",
+  "agent_ready": false,
+  "recommendations": [
+    "Remove or relocate the peripheral MMDetection notebooks that cause scanner misselection",
+    "Include sample datasets or provide built-in dataset download functionality",
+    "Simplify installation to single pip install command without CUDA compilation",
+    "Provide pre-trained model weights that can be downloaded automatically",
+    "Add CPU-only inference capability for demos",
+    "Improve documentation with comprehensive API docs and usage examples",
+    "Reduce coupling between custom packages to enable standalone usage"
+  ],
+  "aeri_cost_usd": 0.6732
+}

@@ -1,0 +1,109 @@
+{
+  "repo_url": "https://github.com/microsoft/LoRA",
+  "scan_date": "2026-05-22 06:45:24",
+  "duration_seconds": 135.6,
+  "verification": {
+    "v1_scanner": {
+      "ipynb_exist": true,
+      "py_excluded": true,
+      "scanner_would_select": [
+        "examples/NLU/notebooks/01-training-tokenizers.ipynb",
+        "examples/NLU/notebooks/02-transformers.ipynb",
+        "examples/NLU/notebooks/03-pipelines.ipynb",
+        "examples/NLU/notebooks/04-onnx-export.ipynb",
+        "examples/NLU/notebooks/05-benchmark.ipynb",
+        "examples/NLU/examples/research_projects/lxmert/demo.ipynb",
+        "examples/NLU/examples/research_projects/movement-pruning/Saving_PruneBERT.ipynb"
+      ],
+      "selection_is_core_method": false
+    },
+    "v2_sample_data": {
+      "actual_data_files_in_repo": [
+        "examples/NLG/data/e2e/train.txt",
+        "examples/NLG/data/e2e/test.txt",
+        "examples/NLG/data/e2e/valid.txt",
+        "examples/NLG/data/dart/dart-v1.1.1-full-train.json",
+        "examples/NLG/data/webnlg_challenge_2017/train.json"
+      ],
+      "requires_external_download": false,
+      "data_included": true
+    },
+    "v3_demo": {
+      "demo_exists": true,
+      "demo_runs_core_method": true,
+      "demo_needs_external_data": true,
+      "demo_path": "examples/NLG/src/gpt2_ft.py"
+    },
+    "v4_environment": {
+      "pip_install_likely_works": false,
+      "has_cuda_deps": true,
+      "blocking_issues": [
+        "Main setup.py has no dependencies listed",
+        "CUDA-specific requirements (cu101)",
+        "Multiple framework conflicts (pytorch/tensorflow/jax)"
+      ]
+    }
+  },
+  "completeness": {
+    "score": 1,
+    "content_score": 2,
+    "structural_score": 1,
+    "reasoning": "Core LoRA method is in .py files, but .ipynb files exist that are generic Transformers tutorials unrelated to LoRA. Scanner will select these misaligned notebooks and miss the actual LoRA implementation.",
+    "core_files": [
+      "loralib/layers.py",
+      "loralib/utils.py",
+      "examples/NLG/src/model.py",
+      "examples/NLU/src/transformers/models/roberta/modeling_roberta.py"
+    ],
+    "scanner_would_find": false,
+    "scanner_would_select": [
+      "examples/NLU/notebooks/02-transformers.ipynb",
+      "examples/NLU/notebooks/03-pipelines.ipynb"
+    ]
+  },
+  "clarity": {
+    "score": 1,
+    "reasoning": "Minimal documentation in core loralib package. Examples have hardcoded paths and complex setup requirements. Main README is good but individual components lack clear docstrings.",
+    "has_docstrings": false,
+    "has_hardcoded_paths": true,
+    "config_system": "none"
+  },
+  "modularity": {
+    "score": 2,
+    "reasoning": "LoRA library itself is modular and importable independently. However, example implementations are tightly coupled to specific datasets and experimental setups.",
+    "model_importable_independently": true,
+    "custom_packages": [
+      "loralib"
+    ]
+  },
+  "reproducibility": {
+    "score": 1,
+    "reasoning": "Main setup.py lacks dependency specification. Examples require CUDA-specific versions and complex environment setup. Multiple framework conflicts make installation unreliable.",
+    "env_install_likely_succeeds": false,
+    "blocking_issues": [
+      "Main package has no dependencies in setup.py",
+      "CUDA version dependencies",
+      "Conflicting framework requirements"
+    ]
+  },
+  "executability": {
+    "score": 1,
+    "reasoning": "Demos exist but require downloading large pretrained checkpoints (GPT-2, RoBERTa models), GPU infrastructure, and complex setup. Cannot run on CPU within reasonable time.",
+    "demo_exists": true,
+    "demo_runs_core_method": true,
+    "demo_path": "examples/NLG/src/gpt2_ft.py",
+    "cpu_capable": false
+  },
+  "total_score": 6,
+  "classification": "Not Agent-Ready",
+  "agent_ready": false,
+  "recommendations": [
+    "Add proper dependencies to main setup.py file",
+    "Create CPU-compatible demo that doesn't require large model downloads",
+    "Add clear docstrings to core LoRA library functions",
+    "Either remove peripheral notebooks or create LoRA-specific tutorial notebooks",
+    "Consolidate conflicting framework requirements",
+    "Provide simple quickstart example using small models"
+  ],
+  "aeri_cost_usd": 0.4176
+}
