@@ -1,6 +1,6 @@
-# AERI Agent — Agentic Excecutability and Readiness Scorer
+# AERI Agent: Agentic Excecutability and Readiness Scorer
 
-Automated agent-readiness scoring for research paper repositories. Uses Claude Code CLI — the same infrastructure as Paper2Agent. No separate API key needed.
+Automated agent-readiness scoring for research paper repositories. Uses Claude Code CLI, the same infrastructure as Paper2Agent. No separate API key needed.
 
 ## Prerequisites
 
@@ -32,10 +32,10 @@ aeri-score https://github.com/owner/repo --output report --format both --verbose
 
 ## How It Works
 
-**Phase 1 — Evidence Gathering (rule-based, instant):**
+**Phase 1: Evidence Gathering (rule-based, instant):**
 Clone repo, analyze file structure, parse dependencies, detect frameworks.
 
-**Phase 2 — Agent Scoring (Claude Code, ~2-5 min):**
+**Phase 2: Agent Scoring (Claude Code, ~2-5 min):**
 Claude Code agent receives evidence + repo access. It reads README, Python files, notebooks, and .gitmodules to score all 5 dimensions with nuanced judgment.
 
 ## Dimensions
